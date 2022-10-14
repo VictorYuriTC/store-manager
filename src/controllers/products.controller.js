@@ -17,7 +17,13 @@ const findProductById = async (req, res) => {
   res.status(product.status).json(product.product);
 };
 
+const addNewProduct = async (req, res) => {
+  const newProduct = await productsService.addNewProduct(req.body);
+  res.status(newProduct.status).json(newProduct.newProductId);
+};
+
 module.exports = {
   getAllProducts,
   findProductById,
+  addNewProduct,
 };
