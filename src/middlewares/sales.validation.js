@@ -1,26 +1,10 @@
 const productsService = require('../services/products.service');
 
-const isProductIdDefined = (productId) => productId === undefined && productId === null;
+const validateProductIdIsDefined = (req, res, next) => {
+  const { productId } = req.body;
 
-const isQuantityDefined = (quantity) => quantity !== undefined && quantity !== null;
-
-const isQuantityGreaterThanZero = (quantity) => quantity >= 1;
-
-const isProductIdSavedOnDatabase = async (productId) => {
-  const product = await productsService.findProductById(productId);
-
-  if (product.error) return false;
-  return true;
-};
-
-const validateNewSalesBody = (req, res, next) => {
-  const {
-    productId,
-    quantity,
-  } = req.body;
-
-  if (isProductIdDefined(productId)) {
-    res.status(400).json({
+  if (productId !== undefined && productId !== null) {
+    return res.status(400).json({
       message: '"productId" is required',
     });
   }
@@ -28,6 +12,46 @@ const validateNewSalesBody = (req, res, next) => {
   next();
 };
 
+const validateQuantityIsDefined = (req, res, next) => {
+  const { quantity } = req.body;
+
+  if (quantity !== undefined && quantity !== null) {
+    return res.status(400).json({
+     message: '"quantity" is require',
+    });
+  }
+
+  next();
+};
+
+const validateQuantityIsGreaterThanZero = (req, res, next) => {
+  const { quantity } = req.body;
+
+  if (quantity < 1) {
+    return res.status(422).json({
+      message: '"quantity" must be greater than or equal to 1',
+    });
+  }
+
+  next();
+};
+
+const validateProductIdIsSavedOnDatabase = async (req, res, next) => {
+  const { productId } = req.body;
+  const product = await productsService.findProductById(productId);
+
+  if (product.error) {
+    return res.status(404).json({
+      message: 'Product not found',
+    });
+  }
+
+  next();
+};
+
 module.exports = {
-  validateNewSalesBody,
+  validateProductIdIsDefined,
+  validateQuantityIsDefined,
+  validateQuantityIsGreaterThanZero,
+  validateProductIdIsSavedOnDatabase,
 };

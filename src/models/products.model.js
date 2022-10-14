@@ -16,8 +16,6 @@ const findProductById = async (productId) => {
 };
 
 const addNewProduct = async (productBody) => {
-  console.log(productBody);
-
   const columns = Object.keys(productBody)
     .map((key) => `${key}`)
     .join(', ');
@@ -25,9 +23,6 @@ const addNewProduct = async (productBody) => {
   const placeholders = Object.keys(productBody)
     .map(() => '?')
     .join(', ');
-
-  console.log(columns);
-  console.log(placeholders);
 
   const [{ insertId }] = await connection.execute(
     `INSERT INTO products (${columns}) VALUE (${placeholders})`,
