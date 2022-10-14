@@ -11,7 +11,7 @@ app.get('/', (_request, response) => {
 
 app.use(express.json());
 
-app.use('/products', productsRouter.router);
+app.use('/products', productsRouter);
 
 // não remova essa exportação, é para o avaliador funcionar
 // você pode registrar suas rotas normalmente, como o exemplo acima
