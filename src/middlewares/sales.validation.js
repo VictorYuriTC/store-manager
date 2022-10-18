@@ -45,10 +45,17 @@ const validateQuantityIsGreaterThanZero = (req, res, next) => {
 };
 
 const validateProductIdIsSavedOnDatabase = async (req, res, next) => {
-  const { productId } = req.body;
-  const product = await productsService.findProductById(productId);
+  const soldProducts = req.body;
+  const doAllSoldProductsExistInDatabase = soldProducts
+    .every(async (product) => {
+      const productExist = await productsService.findProductById(product.productId);
+      console.log(productExist);
+      return !productExist.error;
+    });
 
-  if (product.error) {
+  console.log(doAllSoldProductsExistInDatabase);
+
+  if (doAllSoldProductsExistInDatabase) {
     return res.status(404).json({
       message: 'Product not found',
     });

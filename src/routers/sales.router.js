@@ -8,6 +8,8 @@ router.post(
   '/',
   salesValidation.validateProductIdIsDefined,
   salesValidation.validateQuantityIsDefined,
+  salesValidation.validateQuantityIsGreaterThanZero,
+  salesValidation.validateProductIdIsSavedOnDatabase,
   salesControllers.addNewSale,
 );
 

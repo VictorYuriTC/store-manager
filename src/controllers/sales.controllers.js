@@ -1,8 +1,12 @@
 const salesService = require('../services/sales.service');
 
 const addNewSale = async (req, res) => {
-  const products = await salesService.addNewSale(req.body);
-  res.status(201).json({ message: products });
+  const itemsSold = req.body;
+  const id = await salesService.addNewSale(itemsSold);
+  res.status(201).json({
+    id,
+    itemsSold,
+  });
 };
 
 module.exports = {
