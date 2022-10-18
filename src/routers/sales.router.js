@@ -1,8 +1,14 @@
 const express = require('express');
 const salesValidation = require('../middlewares/sales.validation');
+const salesControllers = require('../controllers/sales.controllers');
 
 const router = express.Router();
 
-router.post('/');
+router.post(
+  '/',
+  salesValidation.validateProductIdIsDefined,
+  salesValidation.validateQuantityIsDefined,
+  salesControllers.addNewSale,
+);
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const { connection } = require('./connection');
 
 const addNewSale = async (saleBody) => {
-    const columns = Object.keys(saleBody)
+  const columns = Object.keys(saleBody)
     .map((key) => `${key}`)
     .join(', ');
 
@@ -9,10 +9,11 @@ const addNewSale = async (saleBody) => {
     .map(() => '?')
     .join(', ');
 
-  const [[insertId]] = connection.execute(
-    `INSERT INTO (${columns}) VALUE (${placeholders})`,
+  const [{ insertId }] = await connection.execute(
+    `INSERT INTO sales (${columns}) VALUE (${placeholders})`,
     [...Object.values(saleBody)],
   );
+  return insertId;
 };
 
 module.exports = {

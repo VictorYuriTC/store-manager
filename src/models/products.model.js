@@ -28,7 +28,6 @@ const addNewProduct = async (productBody) => {
     `INSERT INTO products (${columns}) VALUE (${placeholders})`,
     [...Object.values(productBody)],
   );
-  console.log(insertId);
   return insertId;
 };
 

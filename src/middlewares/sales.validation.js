@@ -1,33 +1,41 @@
 const productsService = require('../services/products.service');
 
 const validateProductIdIsDefined = (req, res, next) => {
-  const { productId } = req.body;
+  const soldProducts = req.body;
 
-  if (productId !== undefined && productId !== null) {
+  const doAllSoldProductsHaveProductId = soldProducts
+    .every((product) => product.productId !== undefined && product.productId !== null);
+
+  if (!doAllSoldProductsHaveProductId) {
     return res.status(400).json({
       message: '"productId" is required',
     });
   }
-
   next();
 };
 
 const validateQuantityIsDefined = (req, res, next) => {
-  const { quantity } = req.body;
+  const soldProducts = req.body;
 
-  if (quantity !== undefined && quantity !== null) {
+  const doAllSoldProductsHaveQuantity = soldProducts
+    .every((product) => product.quantity !== undefined && product.quantity !== null);
+
+  if (!doAllSoldProductsHaveQuantity) {
     return res.status(400).json({
-     message: '"quantity" is require',
-    });
+      message: '"quantity" is required',
+  });
   }
 
   next();
 };
 
 const validateQuantityIsGreaterThanZero = (req, res, next) => {
-  const { quantity } = req.body;
+  const soldProducts = req.body;
 
-  if (quantity < 1) {
+  const doAllSoldProductsHaveQuantityGreaterThanZero = soldProducts
+    .every((product) => product.quantity > 0);
+
+  if (!doAllSoldProductsHaveQuantityGreaterThanZero) {
     return res.status(422).json({
       message: '"quantity" must be greater than or equal to 1',
     });
