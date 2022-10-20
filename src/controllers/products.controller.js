@@ -7,7 +7,6 @@ const getAllProducts = async (req, res) => {
 
 const findProductById = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
   const product = await productsService.findProductById(id);
 
   if (product.error) {

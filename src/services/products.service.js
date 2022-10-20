@@ -18,7 +18,6 @@ const findProductById = async (productId) => {
 
 const addNewProduct = async (productBody) => {
   const newProduct = await productsModel.addNewProduct(productBody);
-  console.log(newProduct);
   const newProductId = await productsModel.findProductById(newProduct);
   return { status: 201, newProductId };
 };

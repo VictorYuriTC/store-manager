@@ -12,6 +12,7 @@ const findProductById = async (productId) => {
     'SELECT * FROM products WHERE id = ?',
     [productId],
   );
+
   return result;
 };
 
