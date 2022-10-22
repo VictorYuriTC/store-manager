@@ -20,6 +20,13 @@ const getAllSales = async (req, res) => {
 const findSaleById = async (req, res) => {
   const { id } = req.params;
   const foundSale = await salesService.findSaleById(id);
+  const { status } = foundSale;
+
+  if (foundSale.error !== undefined) {
+    const { message } = foundSale.error;
+    return res.status(status).json({ message });
+  }
+
   res.status(200).json(
     foundSale,
   );

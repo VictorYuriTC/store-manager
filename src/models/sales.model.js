@@ -33,6 +33,8 @@ const findSaleById = async (queriedId) => {
     FROM StoreManager.sales
     WHERE id = ${queriedId}`,
   );
+
+  console.log(result);
   return result;
 };
 

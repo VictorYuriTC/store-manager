@@ -23,6 +23,13 @@ const getAllSales = async () => {
 
 const findSaleById = async (queriedId) => {
   const foundSale = await salesModel.findSaleById(queriedId);
+  const saleHasBeenFound = foundSale.length > 0;
+
+  if (!saleHasBeenFound) {
+    const error = { message: 'Sale not found' };
+    return { status: 404, error };
+  }
+
   return foundSale;
 };
 
