@@ -17,7 +17,13 @@ const addNewSoldProduct = async (arrayWithSaleBody) => {
   return itemsSold;
 };
 
+const getAllSales = async () => {
+  const allSales = await salesModel.getAllSales();
+  return allSales;
+};
+
 module.exports = {
   addNewSale,
   addNewSoldProduct,
+  getAllSales,
 };

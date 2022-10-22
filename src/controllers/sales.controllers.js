@@ -10,6 +10,14 @@ const addNewSale = async (req, res) => {
   });
 };
 
+const getAllSales = async (req, res) => {
+  const allSales = await salesService.getAllSales();
+  res.status(200).json({
+    allSales,
+  });
+};
+
 module.exports = {
   addNewSale,
+  getAllSales,
 };

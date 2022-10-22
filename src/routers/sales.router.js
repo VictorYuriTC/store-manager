@@ -13,4 +13,9 @@ router.post(
   salesControllers.addNewSale,
 );
 
+router.get(
+  '/',
+  salesControllers.getAllSales,
+);
+
 module.exports = router;
