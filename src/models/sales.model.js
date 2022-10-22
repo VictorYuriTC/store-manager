@@ -31,8 +31,6 @@ const getAllSales = async () => {
     `,
   );
 
-  console.log('result', result);
-
   return result;
 };
 

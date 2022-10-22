@@ -29,6 +29,19 @@ const addNewProduct = async (productBody) => {
     `INSERT INTO products (${columns}) VALUE (${placeholders})`,
     [...Object.values(productBody)],
   );
+
+  return insertId;
+};
+
+const updateProductById = async (productId, productName) => {
+  const [{ insertId }] = await connection.execute(
+    `
+      UPDATE products
+      SET name = ?
+      WHERE id = ?
+    `, [productName, productId],
+  );
+
   return insertId;
 };
 
@@ -36,4 +49,5 @@ module.exports = {
   getAllProducts,
   findProductById,
   addNewProduct,
+  updateProductById,
 };

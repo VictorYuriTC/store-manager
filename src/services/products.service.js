@@ -22,8 +22,23 @@ const addNewProduct = async (productBody) => {
   return { status: 201, newProductId };
 };
 
+const updateProductById = async (productId, productName) => {
+  const foundProduct = await productsModel.findProductById(productId);
+  console.log('Found here', foundProduct);
+
+  if (!foundProduct) {
+    const error = { message: 'Product not found' };
+    return { status: 404, error };
+  }
+
+  const updatedProduct = await productsModel.updateProductById(productId, productName);
+
+  return updatedProduct;
+};
+
 module.exports = {
   getAllProducts,
   findProductById,
   addNewProduct,
+  updateProductById,
 };
