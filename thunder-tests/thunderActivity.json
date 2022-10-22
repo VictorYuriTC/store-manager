@@ -33,17 +33,12 @@
     "containerId": "",
     "name": "http://localhost:3000/test",
     "url": "http://localhost:3000/sales",
-    "method": "POST",
+    "method": "GET",
     "sortNum": 0,
     "created": "2022-10-13T19:55:05.870Z",
-    "modified": "2022-10-18T21:44:28.503Z",
+    "modified": "2022-10-22T17:43:06.923Z",
     "headers": [],
     "params": [],
-    "body": {
-      "type": "json",
-      "raw": "[\n  {\n    \"productId\": 1,\n    \"quantity\": 1\n  },\n  {\n    \"productId\": 2,\n    \"quantity\": 5\n  }\n]",
-      "form": []
-    },
     "tests": []
   },
   {

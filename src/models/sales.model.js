@@ -18,8 +18,10 @@ const addNewSale = async () => {
 
 const getAllSales = async () => {
   const [result] = await connection.execute(
-    'SELECT * FROM sales',
+    'SELECT * FROM StoreManager.sales',
   );
+
+  console.log('result', result);
 
   return result;
 };

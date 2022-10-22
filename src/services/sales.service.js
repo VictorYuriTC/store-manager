@@ -12,7 +12,6 @@ const addNewSoldProduct = async (arrayWithSaleBody) => {
     .addNewSoldProduct(product));
 
   const itemsSold = await Promise.all(promises);
-  console.log(itemsSold);
 
   return itemsSold;
 };
