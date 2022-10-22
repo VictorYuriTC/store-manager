@@ -45,9 +45,21 @@ const updateProductById = async (productId, productName) => {
   return insertId;
 };
 
+const deleteProductById = async (productId) => {
+  const [{ insertId }] = await connection.execute(
+    `
+      DELETE FROM products
+      WHERE id = ?
+    `, [productId],
+  );
+
+  return insertId;
+};
+
 module.exports = {
   getAllProducts,
   findProductById,
   addNewProduct,
   updateProductById,
+  deleteProductById,
 };

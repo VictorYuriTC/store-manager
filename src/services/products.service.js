@@ -24,7 +24,6 @@ const addNewProduct = async (productBody) => {
 
 const updateProductById = async (productId, productName) => {
   const foundProduct = await productsModel.findProductById(productId);
-  console.log('Found here', foundProduct);
 
   if (!foundProduct) {
     const error = { message: 'Product not found' };
@@ -36,9 +35,24 @@ const updateProductById = async (productId, productName) => {
   return updatedProduct;
 };
 
+const deleteProductById = async (productId) => {
+  const foundProduct = await productsModel.findProductById(productId);
+  const doesProductExist = foundProduct !== undefined && foundProduct !== null;
+  console.log(foundProduct);
+
+  if (!doesProductExist) {
+    const error = { message: 'Product not found' };
+    return { status: 404, error };
+  }
+
+  const deletedProduct = await productsModel.deleteProductById(productId);
+  return deletedProduct;
+};
+
 module.exports = {
   getAllProducts,
   findProductById,
   addNewProduct,
   updateProductById,
+  deleteProductById,
 };
