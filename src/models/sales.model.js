@@ -39,9 +39,14 @@ const getAllSales = async () => {
 const findSaleById = async (queriedId) => {
   const [result] = await connection.execute(
     `
-    SELECT *
-    FROM StoreManager.sales
-    WHERE id = ${queriedId}
+    SELECT
+      product_id AS productId,
+      quantity,
+      date
+    FROM StoreManager.sales_products AS sales_p
+    INNER JOIN StoreManager.sales AS sales
+    ON sales_p.sale_id = sales.id
+    WHERE sales_p.sale_id = ${queriedId}
     `,
   );
 
