@@ -21,8 +21,14 @@ const getAllSales = async () => {
   return allSales;
 };
 
+const findSaleById = async (queriedId) => {
+  const foundSale = await salesModel.findSaleById(queriedId);
+  return foundSale;
+};
+
 module.exports = {
   addNewSale,
   addNewSoldProduct,
   getAllSales,
+  findSaleById,
 };

@@ -26,7 +26,18 @@ const getAllSales = async () => {
   return result;
 };
 
+const findSaleById = async (queriedId) => {
+  const [result] = await connection.execute(
+    `
+    SELECT *
+    FROM StoreManager.sales
+    WHERE id = ${queriedId}`,
+  );
+  return result;
+};
+
 module.exports = {
   addNewSale,
   getAllSales,
+  findSaleById,
 };

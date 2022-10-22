@@ -18,4 +18,9 @@ router.get(
   salesControllers.getAllSales,
 );
 
+router.get(
+  '/:id',
+  salesControllers.findSaleById,
+);
+
 module.exports = router;
