@@ -1,4 +1,4 @@
-const { connection } = require('./connection');
+/* const { connection } = require('./connection');
 
 const addNewSoldProduct = async (saleBody) => {
     const columns = Object.keys(saleBody)
@@ -19,3 +19,4 @@ const addNewSoldProduct = async (saleBody) => {
 module.exports = {
   addNewSoldProduct,
 };
+ */
