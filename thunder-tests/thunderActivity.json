@@ -32,11 +32,11 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3000/test",
-    "url": "http://localhost:3000/products/1",
+    "url": "http://localhost:3000/sales",
     "method": "GET",
     "sortNum": 0,
     "created": "2022-10-13T19:55:05.870Z",
-    "modified": "2022-10-23T13:41:42.827Z",
+    "modified": "2022-10-24T16:35:51.216Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -58,6 +58,34 @@
       "raw": "[\n  {\n    \"productId\": 1,\n    \"quantity\": 1\n  },\n  {\n    \"productId\": 2,\n    \"quantity\": 5\n  }\n]",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "c37abe57-791e-456b-8c8d-16a003e9b4ac",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://www.thunderclient.com/welcome",
+    "url": "https://www.thunderclient.com/welcome",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-10-24T16:35:31.098Z",
+    "modified": "2022-10-24T16:35:32.542Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "259df932-67ad-4b4a-9142-6ec687799a3d",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://localhost:3000/sales",
+    "url": "https://localhost:3000/sales",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-10-24T16:35:47.787Z",
+    "modified": "2022-10-24T16:35:47.804Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]
